@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Gokul Ram S B — Embedded & VLSI Engineer</title>
-<meta name="description" content="Portfolio of Gokul Ram S B — Embedded Systems, VLSI, Robotics, IoT"/>
+<title>Gokul Ram S B — Embedded & Automation Engineer</title>
+<meta name="description" content="Portfolio of Gokul Ram S B — Embedded Systems, Automation, Robotics, IoT"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -88,12 +88,16 @@ a { text-decoration: none; color: inherit; }
 
 /* ── CURSOR ── */
 #cur-dot, #cur-ring { position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); }
-#cur-dot { width: 5px; height: 5px; background: var(--text); }
+#cur-dot { width: 5px; height: 5px; background: var(--text); transition: background .18s; }
 #cur-ring { width: 32px; height: 32px; border: 1.5px solid rgba(0,0,0,.22); transition: width .18s var(--ease), height .18s var(--ease), background .18s, border-color .18s; }
 #cur-ring.hov { width: 52px; height: 52px; background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.5); }
 [data-theme="dark"] #cur-dot { background: #f5f5f7; }
 [data-theme="dark"] #cur-ring { border-color: rgba(255,255,255,.3); }
 [data-theme="dark"] #cur-ring.hov { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.5); }
+
+/* Color change when hovering inside dark boxes */
+#cur-dot.box-hov { background: #00f0ff !important; box-shadow: 0 0 10px #00f0ff; }
+#cur-ring.box-hov { border-color: rgba(0, 240, 255, 0.8) !important; background: rgba(0, 240, 255, 0.08) !important; }
 
 /* ── LOADER ── */
 [data-theme="dark"] #loader { background: #0a0a0a; }
@@ -125,6 +129,10 @@ nav.scrolled { background: rgba(245,245,247,.88); backdrop-filter: saturate(2) b
 .bcard { background: #0a0a0a; border: 1px solid var(--card-b); border-radius: 28px; color: #fff; box-shadow: 0 4px 24px rgba(0,0,0,.22), 0 1px 0 rgba(255,255,255,.05) inset; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
 .bcard:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.32); border-color: rgba(255,255,255,.14); }
 [data-theme="dark"] .bcard { background: #1a1a1a; border-color: rgba(255,255,255,.06); }
+/* Fix low visibility text inside boxed areas */
+.bcard .text-white\/55, .bcard .text-white\/50, .bcard .text-white\/65 { color: rgba(255, 255, 255, 0.85) !important; }
+.bcard .text-white\/25 { color: rgba(255, 255, 255, 0.6) !important; }
+.bcard .text-white\/45, .bcard .text-white\/60, .bcard .text-white\/50 { color: rgba(255, 255, 255, 0.8) !important; }
 
 /* ── PROJECT CARD SPOTLIGHT ── */
 .pcard::before { content: ''; position: absolute; inset: 0; background: radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.06), transparent 55%); opacity: 0; transition: opacity .3s; pointer-events: none; border-radius: 28px; }
@@ -247,6 +255,10 @@ textarea { min-height: 100px; resize: vertical; }
     </div>
     <div class="flex items-center gap-3">
       <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme"></button>
+      <a href="Resume_Gokul_Ram_S_B.pdf" download="Resume_Gokul_Ram_S_B.pdf" class="btn-ghost font-sans text-[13px] font-semibold px-4 py-[9px] rounded-full border border-[var(--border)] text-[var(--text)] cursor-none transition-all duration-200 hover:border-[var(--text)] hover:bg-[var(--text)] hover:text-[var(--bg)] whitespace-nowrap flex items-center gap-1.5" id="navResumeBtn">
+        <svg style="width:12px;height:12px;fill:currentColor" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        <span>Resume</span>
+      </a>
       <button class="btn-dark font-sans text-[13px] font-semibold px-[22px] py-[9px] rounded-full bg-[var(--text)] text-[var(--bg)] border-0 cursor-none transition-all duration-200 shadow-[0_1px_4px_rgba(0,0,0,.15)] hover:-translate-y-px hover:shadow-[0_4px_16px_rgba(0,0,0,.2)] whitespace-nowrap" onclick="openModal()">Enquire</button>
     </div>
   </div>
@@ -262,11 +274,16 @@ textarea { min-height: 100px; resize: vertical; }
       <span class="line"><span class="inner">Gokul Ram S B</span></span>
     </h1>
     <p class="hero-sub text-[clamp(16px,2vw,20px)] leading-[1.7] text-[var(--body)] max-w-[560px] mb-10 opacity-0">
-      Engineering student who treats silicon as a canvas and code as architecture. Driven to design <strong class="text-[var(--text)] font-semibold">embedded and VLSI systems</strong> that translate imagination into measurable impact.
+      Engineering student who treats silicon as a canvas and code as architecture. Driven to design <strong class="text-[var(--text)] font-semibold">embedded and automation systems</strong> that translate imagination into measurable impact.
     </p>
     <div class="hero-actions flex gap-3 flex-wrap opacity-0">
       <button class="btn-dark font-sans text-[14px] font-semibold px-7 py-[13px] rounded-full bg-[var(--text)] text-[var(--bg)] border-0 cursor-none transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.18)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,.22)]"
         onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      <a href="Resume_Gokul_Ram_S_B.pdf" download="Resume_Gokul_Ram_S_B.pdf"
+        class="flex gap-1 items-center btn-ghost font-sans text-[14px] font-medium px-7 py-[13px] rounded-full bg-black text-[var(--bg)] border border-[var(--border)] cursor-none transition-all duration-200 hover:border-[var(--text)] hover:text-[var(--bg)] hover:-translate-y-0.5">
+        <svg style="width:14px;height:14px;fill:currentColor;vertical-align:middle;margin-right:6px" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        <span>Download Resume</span>
+      </a>
       <a href="mailto:gokulram842@gmail.com"
         class="btn-ghost font-sans text-[14px] font-medium px-7 py-[13px] rounded-full bg-black text-[var(--bg)] border border-[var(--border)] cursor-none transition-all duration-200 hover:border-[var(--text)] hover:text-[var(--bg)] hover:-translate-y-0.5">Get in Touch</a>
       <a href="https://github.com/GokulramBalaji" target="_blank"
@@ -286,16 +303,16 @@ textarea { min-height: 100px; resize: vertical; }
         <div class="font-mono text-[10px] tracking-[.12em] uppercase text-[var(--muted)]">Current CGPA</div>
       </div>
       <div class="strip-item flex-1 pr-9 border-r border-[var(--border)] mr-9">
-        <div class="font-sans text-[34px] font-bold tracking-[-0.04em] text-[var(--text)] mb-1">4</div>
+        <div class="font-sans text-[34px] font-bold tracking-[-0.04em] text-[var(--text)] mb-1">5</div>
         <div class="font-mono text-[10px] tracking-[.12em] uppercase text-[var(--muted)]">Projects Built</div>
       </div>
       <div class="strip-item flex-1 pr-9 border-r border-[var(--border)] mr-9">
-        <div class="font-sans text-[34px] font-bold tracking-[-0.04em] text-[var(--text)] mb-1">3×</div>
+        <div class="font-sans text-[34px] font-bold tracking-[-0.04em] text-[var(--text)] mb-1">4×</div>
         <div class="font-mono text-[10px] tracking-[.12em] uppercase text-[var(--muted)]">Award Winner</div>
       </div>
       <div class="strip-item flex-1">
-        <div class="font-sans text-[34px] font-bold tracking-[-0.04em] text-[var(--text)] mb-1">Bosch</div>
-        <div class="font-mono text-[10px] tracking-[.12em] uppercase text-[var(--muted)]">Industry Internship</div>
+        <div class="font-sans text-[34px] font-bold tracking-[-0.04em] text-[var(--text)] mb-1">3 Internships</div>
+        <div class="font-mono text-[10px] tracking-[.12em] uppercase text-[var(--muted)]">Industry Exp</div>
       </div>
     </div>
   </div>
@@ -311,14 +328,10 @@ textarea { min-height: 100px; resize: vertical; }
     <div class="about-grid grid grid-cols-[1.3fr_1fr] gap-[72px] items-start">
       <div class="rv-l">
         <p class="text-[17px] leading-[1.85] text-[var(--body)] mb-4">I'm a third-year <strong class="text-[var(--text)] font-semibold">B.E. (Electrical & Electronics Engineering)</strong> student at Dr. Mahalingam College of Engineering and Technology, Pollachi — with a deep passion for systems that sense, think, and act.</p>
-        <p class="text-[17px] leading-[1.85] text-[var(--body)] mt-3.5">I design from the ground up: sensor interfaces, firmware, RTL netlists, and custom PCBs. I seek an environment where <strong class="text-[var(--text)] font-semibold">deep technical rigor, ownership, and bold thinking</strong> converge to build technology that stands the test of time.</p>
+        <p class="text-[17px] leading-[1.85] text-[var(--body)] mt-3.5">I design from the ground up: sensor interfaces, firmware, and custom PCBs. I seek an environment where <strong class="text-[var(--text)] font-semibold">deep technical rigor, ownership, and bold thinking</strong> converge to build technology that stands the test of time.</p>
         <div class="flex flex-wrap gap-2 mt-7">
           <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">Embedded Systems (RTOS)</span>
-          <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">VLSI Design</span>
           <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">Digital Logic Design</span>
-          <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">RTL Design</span>
-          <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">CMOS Technology</span>
-          <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">ASIC Design Flow</span>
           <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">Robotics</span>
           <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">Sensor Interface</span>
           <span class="pill font-sans text-[12px] font-medium px-4 py-[7px] rounded-full bg-[#0a0a0a] text-white border border-[rgba(255,255,255,.08)] cursor-default transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,.15)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,.25)]">IoT & Automation</span>
@@ -328,10 +341,10 @@ textarea { min-height: 100px; resize: vertical; }
         </div>
       </div>
       <div class="kpi-col rv-r flex flex-col gap-3.5">
-        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">4</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Projects Built</div></div>
-        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">3</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Competition Awards</div></div>
-        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">3</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Certifications</div></div>
-        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">1</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Industry Internship</div></div>
+        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">5</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Projects Built</div></div>
+        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">4</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Competition Awards</div></div>
+        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">4</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Certifications</div></div>
+        <div class="bcard kpi px-6 py-[22px] rounded-[14px]"><div class="font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white leading-none mb-1">3</div><div class="font-mono text-[10px] tracking-[.12em] uppercase text-white/55">Industry Internships</div></div>
       </div>
     </div>
   </div>
@@ -347,7 +360,6 @@ textarea { min-height: 100px; resize: vertical; }
     <div class="skill-grid grid grid-cols-3 gap-3.5">
       <!-- Programming -->
       <div class="bcard sk rv d1 p-6 rounded-[14px] relative overflow-hidden" data-pct="90">
-       
         <div class="flex items-center gap-3 mb-4">
           <div class="w-9 h-9 rounded-[10px] bg-white/[.08] border border-white/10 flex items-center justify-center flex-shrink-0">
             <svg class="w-[18px] h-[18px] fill-white" viewBox="0 0 24 24"><path d="M16.5 12c0-2.49-2.01-4.5-4.5-4.5S7.5 9.51 7.5 12s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5zm-4.5 3c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
@@ -359,22 +371,21 @@ textarea { min-height: 100px; resize: vertical; }
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Python</span>
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Java</span>
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Verilog</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Embedded C</span>
         </div>
       </div>
-      <!-- VLSI -->
-      <div class="bcard sk rv d2 p-6 rounded-[14px] relative overflow-hidden" data-pct="76">       
+      <!-- Robotics & IoT -->
+      <div class="bcard sk rv d1 p-6 rounded-[14px] relative overflow-hidden" data-pct="82">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-9 h-9 rounded-[10px] bg-white/[.08] border border-white/10 flex items-center justify-center flex-shrink-0">
-            <svg class="w-[18px] h-[18px] fill-white" viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+            <svg class="w-[18px] h-[18px] fill-white" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m-2 5h4a2 2 0 0 1 2 2v5H8V9a2 2 0 0 1 2-2m-5 5H3v4h2v-4m14 0h2v4h-2v-4M7 18h10v2H7v-2z"/></svg>
           </div>
-          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">Chip Design</div><div class="font-sans text-[15px] font-bold text-white">VLSI Tools</div></div>
+          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">Robotics & IoT</div><div class="font-sans text-[15px] font-bold text-white">Robotics & IoT Tools</div></div>
         </div>
         <div class="flex flex-wrap gap-1.5">
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Intel Quartus</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Cadence</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">RTL Design</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">ASIC Flow</span>
+          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Linux</span>
+          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Firebase</span>
+          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Arduino IDE</span>
+          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Git</span>
         </div>
       </div>
       <!-- Microcontrollers -->
@@ -392,49 +403,45 @@ textarea { min-height: 100px; resize: vertical; }
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Arduino UNO/NANO/MEGA</span>
         </div>
       </div>
-      <!-- Robotics -->
-      <div class="bcard sk rv d1 p-6 rounded-[14px] relative overflow-hidden" data-pct="82">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-9 h-9 rounded-[10px] bg-white/[.08] border border-white/10 flex items-center justify-center flex-shrink-0">
-            <svg class="w-[18px] h-[18px] fill-white" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m-2 5h4a2 2 0 0 1 2 2v5H8V9a2 2 0 0 1 2-2m-5 5H3v4h2v-4m14 0h2v4h-2v-4M7 18h10v2H7v-2z"/></svg>
-          </div>
-          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">Robotics & IoT</div><div class="font-sans text-[15px] font-bold text-white">Autonomy Stack</div></div>
-        </div>
-        <div class="flex flex-wrap gap-1.5">
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">ROS2</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Gazebo</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Linux</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Firebase</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Arduino IDE</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Git</span>
-        </div>
-      </div>
       <!-- Circuit Tools -->
       <div class="bcard sk rv d2 p-6 rounded-[14px] relative overflow-hidden" data-pct="78">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-9 h-9 rounded-[10px] bg-white/[.08] border border-white/10 flex items-center justify-center flex-shrink-0">
             <svg class="w-[18px] h-[18px] fill-white" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
           </div>
-          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">Simulation & PCB</div><div class="font-sans text-[15px] font-bold text-white">Circuit Tools</div></div>
+          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">Simulation</div><div class="font-sans text-[15px] font-bold text-white">Circuit Simulation</div></div>
         </div>
         <div class="flex flex-wrap gap-1.5">
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">LT Spice</span>
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">MATLAB</span>
+        </div>
+      </div>
+      <!-- PCB Design -->
+      <div class="bcard sk rv d2 p-6 rounded-[14px] relative overflow-hidden" data-pct="75">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-9 h-9 rounded-[10px] bg-white/[.08] border border-white/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-[18px] h-[18px] fill-white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2 0V4.07c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93z"/></svg>
+          </div>
+          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">Hardware Layout</div><div class="font-sans text-[15px] font-bold text-white">PCB Design</div></div>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">KiCad</span>
         </div>
       </div>
-      <!-- AI Automation -->
-      <div class="bcard sk rv d3 p-6 rounded-[14px] relative overflow-hidden" data-pct="65">
+      <!-- AI & Automation -->
+      <div class="bcard sk rv d3 p-6 rounded-[14px] relative overflow-hidden" data-pct="75">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-9 h-9 rounded-[10px] bg-white/[.08] border border-white/10 flex items-center justify-center flex-shrink-0">
             <svg class="w-[18px] h-[18px] fill-white" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 17.93V18a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8 8 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8 8 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8 8 0 0 1 13 19.93z"/></svg>
           </div>
-          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">AI & Workflow</div><div class="font-sans text-[15px] font-bold text-white">Automation</div></div>
+          <div><div class="font-mono text-[9px] tracking-[.14em] uppercase text-white/25 mb-1">AI & Workflow</div><div class="font-sans text-[15px] font-bold text-white">AI & Automation</div></div>
         </div>
         <div class="flex flex-wrap gap-1.5">
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">n8n</span>
-          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Openclaw</span>
           <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Node-RED</span>
+          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Antigravity</span>
+          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Claude code</span>
+          <span class="font-mono text-[10px] px-[9px] py-[3px] rounded-[5px] bg-white/[.07] border border-white/[.08] text-white/60">Cursor</span>
         </div>
       </div>
     </div>
@@ -460,77 +467,77 @@ textarea { min-height: 100px; resize: vertical; }
     <div class="proj-grid grid grid-cols-2 gap-4">
       <!-- P1 -->
       <div class="bcard pcard rv d1 p-[30px_28px] rounded-[28px] relative overflow-hidden cursor-none">
-        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">Ongoing</span>
-        <div class="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[.1em] uppercase px-3 py-[5px] rounded-full mb-[18px] bg-white/10 border border-white/[.18] text-white"><span class="w-1.5 h-1.5 rounded-full bg-current" style="animation:sdot 2s ease-in-out infinite"></span>Real Time & Ongoing</div>
+        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">Oct 2025</span>
+        <div class="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[.1em] uppercase px-3 py-[5px] rounded-full mb-[18px] bg-white/[.07] border border-white/[.12] text-white/60"><span class="w-1.5 h-1.5 rounded-full bg-current" style="animation:sdot 2s ease-in-out infinite"></span>Complete</div>
         <div class="font-mono text-[9px] tracking-[.1em] text-white/25 mb-2">PROJECT 01</div>
-        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Tifan — Seed Driller / Planter</div>
-        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">A precision agricultural implement designed to sow seeds uniformly at optimal depth and spacing, improving crop yield while reducing manual labor and seed wastage.</p>
+        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Automated water management system</div>
+        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">An Automated Water Management System intelligently monitors and controls water distribution in real time, minimizing wastage and maximizing efficiency through smart sensing and automation.</p>
         <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Embedded Systems</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Agriculture</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">IoT</span>
           <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Automation</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Actuators</span>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-8 2s3-3 8-3c0 0-5.7-3-9 4.3C11 8 17 8 17 8z"/></svg></div>
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M9 3H7v2H5v2H3v2h2v2H3v2h2v2H3v2h2v2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v-2h2v-2h-2v-2h2v-2h-2V9h2V7h-2V5h-2V3h-2v2h-2V3H9zm6 16H9V5h6v14z"/></svg></div>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Sensing</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Water Distribution</span>
         </div>
       </div>
       <!-- P2 -->
       <div class="bcard pcard rv d2 p-[30px_28px] rounded-[28px] relative overflow-hidden cursor-none">
-        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">Oct 2025</span>
+        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">Apr 2026</span>
         <div class="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[.1em] uppercase px-3 py-[5px] rounded-full mb-[18px] bg-white/[.07] border border-white/[.12] text-white/60"><span class="w-1.5 h-1.5 rounded-full bg-current" style="animation:sdot 2s ease-in-out infinite"></span>Complete</div>
         <div class="font-mono text-[9px] tracking-[.1em] text-white/25 mb-2">PROJECT 02</div>
-        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Automated Water Management System</div>
-        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">Intelligently monitors and controls water distribution in real time, minimizing wastage and maximizing efficiency through smart sensing and automation.</p>
+        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Tifan ( Seed driller / Planter )</div>
+        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">A Tifan (Seed Driller/Planter) is a precision agricultural implement designed to sow seeds uniformly at optimal depth and spacing, improving crop yield while reducing manual labor and seed wastage.</p>
         <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">ESP32</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Sensors</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">IoT</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Firebase</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Relay</span>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2zm-3.5-6c.6 0 1.17.3 1.5.8.6-.96 1.65-1.6 2.75-1.6s2.17.64 2.75 1.6c.33-.5.9-.8 1.5-.8.97 0 1.75.78 1.75 1.75S18.97 17.5 18 17.5c-.61 0-1.17-.3-1.5-.8a3.23 3.23 0 0 1-5.5 0c-.33.5-.89.8-1.5.8-.97 0-1.75-.78-1.75-1.75S7.53 14 8.5 14z"/></svg></div>
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4 2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></div>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Precision Agriculture</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Automation</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Seed Driller</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Hardware Design</span>
         </div>
       </div>
       <!-- P3 -->
       <div class="bcard pcard rv d1 p-[30px_28px] rounded-[28px] relative overflow-hidden cursor-none">
-        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">Aug 2024</span>
+        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">May 2024</span>
         <div class="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[.1em] uppercase px-3 py-[5px] rounded-full mb-[18px] bg-white/[.07] border border-white/[.12] text-white/60"><span class="w-1.5 h-1.5 rounded-full bg-current" style="animation:sdot 2s ease-in-out infinite"></span>Complete</div>
         <div class="font-mono text-[9px] tracking-[.1em] text-white/25 mb-2">PROJECT 03</div>
-        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Object Following Robot</div>
-        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">Uses real-time sensing and control algorithms to detect, track, and autonomously follow a target, demonstrating intelligent motion planning and embedded system integration.</p>
+        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Smart Agro-Environmental Monitoring System (SAEMS)</div>
+        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">An ESP32-based AgroClimate IntelliSense System delivers real-time soil and atmospheric insights, enabling precision farming, optimized irrigation, and data-driven agricultural decision-making.</p>
         <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Arduino</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">IR Sensors</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Motor Control</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">PID</span>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m-2 5h4a2 2 0 0 1 2 2v5H8V9a2 2 0 0 1 2-2m-5 5H3v4h2v-4m14 0h2v4h-2v-4M7 18h10v2H7v-2z"/></svg></div>
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M12 9c-1.6 0-3.15.25-4.6.72L5.13 7.35A14.85 14.85 0 0 1 12 5.5c3.06 0 5.86.92 8.17 2.5l-1.42 1.42C17.07 8.26 14.66 7.5 12 9zm0 3c-.97 0-1.9.19-2.77.52L7 10.29A11.27 11.27 0 0 1 12 9c1.85 0 3.6.44 5.14 1.22L15 12.45A5.91 5.91 0 0 0 12 12zm3 5-3 3-3-3a4.237 4.237 0 0 1 6 0z"/></svg></div>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">ESP32</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">AgroClimate</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Precision Farming</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Sensors</span>
         </div>
       </div>
       <!-- P4 -->
       <div class="bcard pcard rv d2 p-[30px_28px] rounded-[28px] relative overflow-hidden cursor-none">
-        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">May 2024</span>
+        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">June 2026</span>
         <div class="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[.1em] uppercase px-3 py-[5px] rounded-full mb-[18px] bg-white/[.07] border border-white/[.12] text-white/60"><span class="w-1.5 h-1.5 rounded-full bg-current" style="animation:sdot 2s ease-in-out infinite"></span>Complete</div>
         <div class="font-mono text-[9px] tracking-[.1em] text-white/25 mb-2">PROJECT 04</div>
-        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">SAEMS — Smart Agro-Environmental Monitoring System</div>
-        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">An ESP32-based AgroClimate IntelliSense System delivering real-time soil and atmospheric insights, enabling precision farming, optimized irrigation, and data-driven decision-making.</p>
+        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Inventory Management (Real life application)</div>
+        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">A role-based inventory management system for tracking equipment, vendors, products, utilities, and audit assets with advanced search and reporting features.</p>
         <div class="flex flex-wrap gap-1.5 mb-4">
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">ESP32</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Firebase</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Cloud</span>
-          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Precision Farming</span>
-        </div>
-        <div class="flex items-center gap-2 mt-4">
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></div>
-          <div class="w-[26px] h-[26px] rounded-[6px] bg-white/[.07] border border-white/10 flex items-center justify-center"><svg class="w-3.5 h-3.5 fill-white/70" viewBox="0 0 24 24"><path d="M6.5 20Q4.22 20 2.61 18.43 1 16.85 1 14.58q0-1.95 1.17-3.48 1.18-1.53 3.08-1.95.51-2.26 2.38-3.7Q9.5 4 12 4q3.02 0 5.01 1.98Q19 7.98 19 11q1.73.2 2.86 1.5 1.14 1.28 1.14 3 0 1.88-1.31 3.19T18.5 20z"/></svg></div>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Role-based Access</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Tracking</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Audit Assets</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Search & Report</span>
         </div>
       </div>
+      <!-- P5 -->
+      <div class="bcard pcard rv d1 p-[30px_28px] rounded-[28px] relative overflow-hidden cursor-none col-span-2 max-[900px]:col-span-1">
+        <span class="absolute top-[26px] right-[26px] font-mono text-[10px] text-white/25">Ongoing</span>
+        <div class="inline-flex items-center gap-1.5 font-mono text-[9px] tracking-[.1em] uppercase px-3 py-[5px] rounded-full mb-[18px] bg-white/10 border border-white/[.18] text-white"><span class="w-1.5 h-1.5 rounded-full bg-current" style="animation:sdot 2s ease-in-out infinite"></span>Real Time & Ongoing</div>
+        <div class="font-mono text-[9px] tracking-[.1em] text-white/25 mb-2">PROJECT 05</div>
+        <div class="font-sans text-[19px] font-bold tracking-[-0.02em] text-white mb-2.5 leading-[1.2]">Adaptive Smart Laboratory Management Framework using RFID and Web Technologies</div>
+        <p class="text-[13px] leading-[1.75] text-white/55 mb-[18px]">An RFID-enabled web application for managing laboratory assets, student attendance, experiments, and equipment through a centralized platform.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">RFID</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Web Technologies</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Laboratory Management</span>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded-[6px] bg-white/[.07] border border-white/10 text-white/65">Centralized Platform</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   </div>
 </section>
@@ -580,26 +587,86 @@ textarea { min-height: 100px; resize: vertical; }
   <div class="relative z-[2] w-[min(1080px,92vw)] mx-auto">
     <div class="sec-ey rv font-mono text-[10px] tracking-[.18em] uppercase text-[var(--muted)] mb-2.5 flex items-center gap-2.5 before:content-[attr(data-n)] before:text-[var(--dim)]" data-n="05 —">Internship</div>
     <h2 class="sec-h rv text-[clamp(30px,4.5vw,56px)] font-extrabold tracking-[-0.04em] text-[var(--text)] leading-none mb-[52px]">Industry <span class="ghost">Experience</span></h2>
-    <div class="bcard intern-card-inner rv grid grid-cols-[1fr_auto] gap-10 items-center p-[44px_48px] rounded-[28px]">
-      <div>
-        <div class="flex items-center gap-2.5 mb-[18px]">
-          <div class="px-4 py-2 rounded-[10px] bg-white/[.07] border border-white/10 flex items-center gap-2">
-            <svg class="w-5 h-5 fill-white" viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/></svg>
-            <span class="font-sans text-[14px] font-bold text-white">Bosch Rexroth AG</span>
+    <div class="flex flex-col gap-6">
+      <!-- Card 1: Bosch Rexroth AG -->
+      <div class="bcard intern-card-inner rv grid grid-cols-[1fr_auto] gap-10 items-center p-[34px_38px] rounded-[24px]">
+        <div>
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <div class="px-3.5 py-1.5 rounded-[8px] bg-white/[.07] border border-white/10 flex items-center gap-2">
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5A2.5 2.5 0 0 0 10.5 1 2.5 2.5 0 0 0 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5z"/></svg>
+              <span class="font-sans text-[13px] font-bold text-white">Bosch Rexroth AG</span>
+            </div>
+          </div>
+          <div class="font-mono text-[9px] tracking-[.18em] uppercase text-white/25 mb-2 flex items-center gap-2 before:content-[''] before:w-5 before:h-px before:bg-white/20">Industrial Automation Intern</div>
+          <div class="font-sans text-[22px] font-extrabold tracking-[-0.04em] text-white mb-1.5">BOSCH RETHROX [Pollachi]</div>
+          <div class="text-[13px] text-white/55 mb-4">Industrial Automation · Hydraulics · Motion Control</div>
+          <ul class="text-[13px] leading-[1.7] text-white/50 max-w-[620px] list-disc list-inside flex flex-col gap-1.5">
+            <li>Completed an internship at Bosch Rexroth AG, gaining practical exposure to industrial automation, hydraulics, and motion control systems.</li>
+            <li>Assisted in understanding real-time drive and control applications, strengthening knowledge in advanced manufacturing technologies and smart industrial solutions.</li>
+          </ul>
+          <div class="inline-flex items-center gap-1.5 mt-4 font-mono text-[10px] tracking-[.08em] text-white/45 px-[13px] py-[5px] rounded-[7px] bg-white/[.05] border border-white/[.08]">
+            <svg style="width:12px;height:12px;fill:rgba(255,255,255,.45)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Pollachi, Tamil Nadu
           </div>
         </div>
-        <div class="font-mono text-[9px] tracking-[.18em] uppercase text-white/25 mb-3 flex items-center gap-2 before:content-[''] before:w-5 before:h-px before:bg-white/20">Industrial Automation Intern</div>
-        <div class="font-sans text-[36px] font-extrabold tracking-[-0.04em] text-white mb-1.5">Bosch Rexroth AG</div>
-        <div class="text-[14px] text-white/55 mb-5">Industrial Automation · Hydraulics · Motion Control</div>
-        <p class="text-[14px] leading-[1.8] text-white/50 max-w-[520px]">Gained practical exposure to industrial automation, hydraulics, and motion control systems. Assisted in understanding real-time drive and control applications, strengthening knowledge in advanced manufacturing technologies and smart industrial solutions.</p>
-        <div class="inline-flex items-center gap-1.5 mt-4 font-mono text-[10px] tracking-[.08em] text-white/45 px-[13px] py-[5px] rounded-[7px] bg-white/[.05] border border-white/[.08]">
-          <svg style="width:12px;height:12px;fill:rgba(255,255,255,.45)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Pollachi
+        <div class="i-date-block text-right">
+          <div class="i-month-big font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white/10 leading-none">JUN</div>
+          <div class="font-mono text-[12px] text-white/25 text-center mt-1">2025</div>
         </div>
       </div>
-      <div class="i-date-block text-right">
-        <div class="i-month-big font-sans text-[52px] font-extrabold tracking-[-0.05em] text-white/10 leading-none">JUN</div>
-        <div class="font-mono text-[12px] text-white/25 text-center mt-1">2025</div>
+
+      <!-- Card 2: IITM IEAC -->
+      <div class="bcard intern-card-inner rv d1 grid grid-cols-[1fr_auto] gap-10 items-center p-[34px_38px] rounded-[24px]">
+        <div>
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <div class="px-3.5 py-1.5 rounded-[8px] bg-white/[.07] border border-white/10 flex items-center gap-2">
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18V15h2v-2.82L9 13.3V17l3 1.68L15 17v-3.7l2-1.09V15h2v-3.82L21 9 12 3zm6.33 7L12 13.34 5.67 10 12 6.66 18.33 10zm-1.33 4.88-5 2.78-5-2.78V13l5 2.72L17 13v1.88z"/></svg>
+              <span class="font-sans text-[13px] font-bold text-white">IITM IEAC</span>
+            </div>
+          </div>
+          <div class="font-mono text-[9px] tracking-[.18em] uppercase text-white/25 mb-2 flex items-center gap-2 before:content-[''] before:w-5 before:h-px before:bg-white/20">Industrial Energy Assessment Cell Intern</div>
+          <div class="font-sans text-[22px] font-extrabold tracking-[-0.04em] text-white mb-1.5">IITM IEAC (Industrial Energy Assessment cell)</div>
+          <div class="text-[13px] text-white/55 mb-4">Inventory Management Application · Workflow Optimization · Data Analysis</div>
+          <ul class="text-[13px] leading-[1.7] text-white/50 max-w-[620px] list-disc list-inside flex flex-col gap-1.5">
+            <li>Developed an Inventory Management Application for IIT Madras KISEM.</li>
+            <li>Contributed to energy audit workflow optimization and industrial data analysis.</li>
+          </ul>
+          <div class="inline-flex items-center gap-1.5 mt-4 font-mono text-[10px] tracking-[.08em] text-white/45 px-[13px] py-[5px] rounded-[7px] bg-white/[.05] border border-white/[.08]">
+            <svg style="width:12px;height:12px;fill:rgba(255,255,255,.45)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            IIT Madras KISEM
+          </div>
+        </div>
+        <div class="i-date-block text-right">
+          <div class="i-month-big font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white/10 leading-none">JUN</div>
+          <div class="font-mono text-[12px] text-white/25 text-center mt-1">2026</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Siemens -->
+      <div class="bcard intern-card-inner rv d2 grid grid-cols-[1fr_auto] gap-10 items-center p-[34px_38px] rounded-[24px]">
+        <div>
+          <div class="flex items-center gap-2.5 mb-3.5">
+            <div class="px-3.5 py-1.5 rounded-[8px] bg-white/[.07] border border-white/10 flex items-center gap-2">
+              <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+              <span class="font-sans text-[13px] font-bold text-white">Siemens</span>
+            </div>
+          </div>
+          <div class="font-mono text-[9px] tracking-[.18em] uppercase text-white/25 mb-2 flex items-center gap-2 before:content-[''] before:w-5 before:h-px before:bg-white/20">Virtual Simulation Program</div>
+          <div class="font-sans text-[22px] font-extrabold tracking-[-0.04em] text-white mb-1.5">Siemens ( Virtual : Industry readiness program)</div>
+          <div class="text-[13px] text-white/55 mb-4">Industrial Simulation · Engineering Simulation Tools · Workflows</div>
+          <ul class="text-[13px] leading-[1.7] text-white/50 max-w-[620px] list-disc list-inside flex flex-col gap-1.5">
+            <li>Completed Siemens Industrial Simulation training with hands-on experience in engineering simulation tools and workflows.</li>
+            <li>Applied simulation techniques to analyze system performance and strengthen problem-solving skills in engineering applications.</li>
+          </ul>
+          <div class="inline-flex items-center gap-1.5 mt-4 font-mono text-[10px] tracking-[.08em] text-white/45 px-[13px] py-[5px] rounded-[7px] bg-white/[.05] border border-white/[.08]">
+            <svg style="width:12px;height:12px;fill:rgba(255,255,255,.45)" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Ongoing
+          </div>
+        </div>
+        <div class="i-date-block text-right">
+          <div class="i-month-big font-sans text-[42px] font-extrabold tracking-[-0.05em] text-white/10 leading-none">ON</div>
+          <div class="font-mono text-[12px] text-white/25 text-center mt-1">GOING</div>
+        </div>
       </div>
     </div>
   </div>
@@ -612,7 +679,7 @@ textarea { min-height: 100px; resize: vertical; }
   <div class="relative z-[2] w-[min(1080px,92vw)] mx-auto">
     <div class="sec-ey rv font-mono text-[10px] tracking-[.18em] uppercase text-[var(--muted)] mb-2.5 flex items-center gap-2.5 before:content-[attr(data-n)] before:text-[var(--dim)]" data-n="06 —">Achievements</div>
     <h2 class="sec-h rv text-[clamp(30px,4.5vw,56px)] font-extrabold tracking-[-0.04em] text-[var(--text)] leading-none mb-[52px]">Wins & <span class="ghost">Recognition</span></h2>
-    <div class="ach-grid grid grid-cols-3 gap-4">
+    <div class="ach-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="bcard ach-card rv d1 p-[32px_26px] rounded-[28px] text-center relative overflow-hidden">
         <div class="w-[52px] h-[52px] rounded-[16px] bg-white/[.07] border border-white/10 mx-auto mb-4 flex items-center justify-center text-[24px]">
           <svg style="width:24px;height:24px;fill:rgba(255,255,255,.8)" viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zm-2 3c0 2.21-1.79 4-4 4s-4-1.79-4-4V5h8v3z"/></svg>
@@ -636,6 +703,14 @@ textarea { min-height: 100px; resize: vertical; }
         <span class="font-mono text-[9px] tracking-[.14em] uppercase px-3 py-1 rounded-full bg-white/[.08] border border-white/[.12] text-white/55 inline-block mb-3">2nd Prize</span>
         <div class="font-sans text-[15px] font-bold text-white mb-2 leading-[1.3]">Code Clash & IoT Hackathon</div>
         <div class="text-[12px] text-white/25 leading-[1.5]">EEE Dept — Dr. Mahalingam College of Engineering, Pollachi</div>
+      </div>
+      <div class="bcard ach-card rv d4 p-[32px_26px] rounded-[28px] text-center relative overflow-hidden">
+        <div class="w-[52px] h-[52px] rounded-[16px] bg-white/[.07] border border-white/10 mx-auto mb-4 flex items-center justify-center text-[24px]">
+          <svg style="width:24px;height:24px;fill:rgba(255,255,255,.8)" viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2v3h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2V4a2 2 0 0 1 2-2h3zm0 2h-3v3H7v2h2v3h3v-3h2V9h-2V4z"/></svg>
+        </div>
+        <span class="font-mono text-[9px] tracking-[.14em] uppercase px-3 py-1 rounded-full bg-white/[.08] border border-white/[.12] text-white/55 inline-block mb-3">Winner</span>
+        <div class="font-sans text-[15px] font-bold text-white mb-2 leading-[1.3]">Best Prototyping Award</div>
+        <div class="text-[12px] text-white/25 leading-[1.5]">TIFAN 2026</div>
       </div>
     </div>
   </div>
@@ -678,11 +753,11 @@ textarea { min-height: 100px; resize: vertical; }
       </div>
       <div class="bcard cert-card rv d3 flex items-start gap-4 p-[22px_24px] rounded-[14px] group">
         <div class="w-11 h-11 rounded-[12px] bg-white/[.07] border border-white/10 flex items-center justify-center flex-shrink-0 transition-all duration-[.25s] group-hover:bg-white/[.14]">
-          <svg class="w-[22px] h-[22px] fill-white/75" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 17.93V18a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8 8 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8 8 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8 8 0 0 1 13 19.93z"/></svg>        
+          <svg class="w-[22px] h-[22px] fill-white/75" viewBox="0 0 24 24"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3v-2h-3V7h-2v3H8v2h3v3h2v-3z"/></svg>
         </div>
         <div>
-          <div class="font-sans text-[13px] font-semibold text-white mb-1 leading-[1.4]">More in progress…</div>
-          <div class="font-mono text-[10px] text-white/25 tracking-[.04em]">Ongoing learning</div>
+          <div class="font-sans text-[13px] font-semibold text-white mb-1 leading-[1.4]">Leadership and Team Effectiveness</div>
+          <div class="font-mono text-[10px] text-white/25 tracking-[.04em]">NPTEL</div>
         </div>
       </div>
     </div>
@@ -826,13 +901,21 @@ window.addEventListener('mousemove',e=>{
 });
 (function raf(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(raf);})();
 document.addEventListener('mouseover',e=>{
+  const isBox = e.target.closest('.bcard');
+  if(isBox) {
+    dot.classList.add('box-hov');
+    ring.classList.add('box-hov');
+  } else {
+    dot.classList.remove('box-hov');
+    ring.classList.remove('box-hov');
+  }
   if(e.target.closest('a,button,.bcard,.pill,.soft-tag,.sk,.pcard,.ach-card,.cert-card,.edu-card-inner,.intern-card-inner,.c-link,.kpi,input,textarea'))
     ring.classList.add('hov');
   else ring.classList.remove('hov');
 });
 
 /* ── TYPING ── */
-const words=['Embedded Systems · VLSI Design · Robotics · IoT','RTL Design · CMOS Technology · ASIC Flow','ROS2 · ESP32 · Raspberry Pi · Arduino','n8n · Firebase · KiCad · MATLAB'];
+const words=['Embedded Systems · Automation · Robotics · IoT','ESP32 · Raspberry Pi · Arduino · Firebase','n8n · Git · Linux · KiCad · MATLAB'];
 let wi=0,ci=0,deleting=false,tt=document.getElementById('typeTarget');
 function type(){
   const w=words[wi];
