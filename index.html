@@ -91,13 +91,18 @@ a { text-decoration: none; color: inherit; }
 #cur-dot { width: 5px; height: 5px; background: var(--text); transition: background .18s; }
 #cur-ring { width: 32px; height: 32px; border: 1.5px solid rgba(0,0,0,.22); transition: width .18s var(--ease), height .18s var(--ease), background .18s, border-color .18s; }
 #cur-ring.hov { width: 52px; height: 52px; background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.5); }
-[data-theme="dark"] #cur-dot { background: #f5f5f7; }
-[data-theme="dark"] #cur-ring { border-color: rgba(255,255,255,.3); }
-[data-theme="dark"] #cur-ring.hov { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.5); }
+[data-theme="dark"] #cur-dot { background: #ffffff; }
+[data-theme="dark"] #cur-ring { border-color: rgba(255,255,255,.45); }
+[data-theme="dark"] #cur-ring.hov { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.7); }
 
-/* Color change when hovering inside dark boxes */
-#cur-dot.box-hov { background: #00f0ff !important; box-shadow: 0 0 10px #00f0ff; }
-#cur-ring.box-hov { border-color: rgba(0, 240, 255, 0.8) !important; background: rgba(0, 240, 255, 0.08) !important; }
+/* Color change when hovering inside boxes (theme-dependent) */
+/* Light Theme: Boxes are dark. Cursor should be bright cyan. */
+[data-theme="light"] #cur-dot.box-hov { background: #00f0ff !important; box-shadow: 0 0 10px #00f0ff; }
+[data-theme="light"] #cur-ring.box-hov { border-color: rgba(0, 240, 255, 0.8) !important; background: rgba(0, 240, 255, 0.08) !important; }
+
+/* Dark Theme: Boxes are light/white. Cursor should be dark. */
+[data-theme="dark"] #cur-dot.box-hov { background: #0a0a0a !important; box-shadow: 0 0 8px rgba(0,0,0,0.3); }
+[data-theme="dark"] #cur-ring.box-hov { border-color: rgba(10, 10, 10, 0.8) !important; background: rgba(10, 10, 10, 0.08) !important; }
 
 /* ── LOADER ── */
 [data-theme="dark"] #loader { background: #0a0a0a; }
@@ -126,6 +131,7 @@ nav.scrolled { background: rgba(245,245,247,.88); backdrop-filter: saturate(2) b
 @keyframes mi { from{opacity:0;transform:scale(.94) translateY(18px)} }
 
 /* ── BCARD ── */
+/* ── BCARD ── */
 .bcard { background: #0a0a0a; border: 1px solid var(--card-b); border-radius: 28px; color: #fff; box-shadow: 0 4px 24px rgba(0,0,0,.22), 0 1px 0 rgba(255,255,255,.05) inset; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
 .bcard:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.32); border-color: rgba(255,255,255,.14); }
 [data-theme="dark"] .bcard { background: #1a1a1a; border-color: rgba(255,255,255,.06); }
@@ -134,12 +140,65 @@ nav.scrolled { background: rgba(245,245,247,.88); backdrop-filter: saturate(2) b
 .bcard .text-white\/25 { color: rgba(255, 255, 255, 0.6) !important; }
 .bcard .text-white\/45, .bcard .text-white\/60, .bcard .text-white\/50 { color: rgba(255, 255, 255, 0.8) !important; }
 
+/* Invert .bcard in dark theme to light/white card for stunning contrast and readability */
+[data-theme="dark"] .bcard {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 24px rgba(255, 255, 255, 0.03) !important;
+}
+[data-theme="dark"] .bcard:hover {
+  box-shadow: 0 12px 36px rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+/* Invert texts inside bcard in dark theme */
+[data-theme="dark"] .bcard .text-white\/85,
+[data-theme="dark"] .bcard .text-white\/80,
+[data-theme="dark"] .bcard .text-white\/75,
+[data-theme="dark"] .bcard .text-white\/65,
+[data-theme="dark"] .bcard .text-white\/55,
+[data-theme="dark"] .bcard .text-white\/50,
+[data-theme="dark"] .bcard .text-white\/60,
+[data-theme="dark"] .bcard .text-white {
+  color: #0a0a0a !important;
+}
+[data-theme="dark"] .bcard .text-white\/50,
+[data-theme="dark"] .bcard .text-white\/55,
+[data-theme="dark"] .bcard .text-white\/65 {
+  color: rgba(10, 10, 10, 0.7) !important;
+}
+[data-theme="dark"] .bcard .text-white\/25,
+[data-theme="dark"] .bcard .text-white\/30 {
+  color: rgba(10, 10, 10, 0.45) !important;
+}
+/* Invert tags/pills background inside bcard in dark theme */
+[data-theme="dark"] .bcard .pill,
+[data-theme="dark"] .bcard span[class*="bg-white/"] {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #0a0a0a !important;
+}
+/* Invert icons inside bcard in dark theme */
+[data-theme="dark"] .bcard svg {
+  fill: #0a0a0a !important;
+}
+[data-theme="dark"] .bcard .c-ico,
+[data-theme="dark"] .bcard div[class*="bg-white/"] {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+[data-theme="dark"] .bcard .i-month-big {
+  color: rgba(0, 0, 0, 0.08) !important;
+}
+
 /* ── PROJECT CARD SPOTLIGHT ── */
 .pcard::before { content: ''; position: absolute; inset: 0; background: radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.06), transparent 55%); opacity: 0; transition: opacity .3s; pointer-events: none; border-radius: 28px; }
 .pcard:hover::before { opacity: 1; }
+[data-theme="dark"] .pcard::before { background: radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(0,0,0,.04), transparent 55%) !important; }
 
 /* ── ACH CARD GLOW ── */
 .ach-card::after { content: ''; position: absolute; top: -40%; left: 50%; transform: translateX(-50%); width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.05), transparent 70%); pointer-events: none; }
+[data-theme="dark"] .ach-card::after { background: radial-gradient(circle, rgba(0,0,0,.03), transparent 70%) !important; }
 
 /* ── SKILL RING ── */
 .sk-ring { transform: rotate(-90deg); }
@@ -189,26 +248,52 @@ textarea { min-height: 100px; resize: vertical; }
 [data-theme="dark"] .progress-bar { background: rgba(255,255,255,.15); }
 [data-theme="dark"] .progress-fill { background: #f5f5f7; }
 
-/* ── STRIP ITEM ── */
+/* ── SECTION HEIGHTS / SPACING CONTRACTIONS ── */
+section {
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+/* ── RESPONSIVE MEDIA QUERIES ── */
 @media(max-width:900px) {
-  .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-  .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   .skill-grid { grid-template-columns: 1fr 1fr !important; }
   .proj-grid { grid-template-columns: 1fr !important; }
   .ach-grid { grid-template-columns: 1fr !important; }
   .cert-grid { grid-template-columns: 1fr !important; }
-  .intern-card-inner { grid-template-columns: 1fr !important; gap: 20px !important; padding: 32px !important; }
+  .intern-card-inner { grid-template-columns: 1fr !important; gap: 20px !important; padding: 28px !important; }
   .i-month-big { font-size: 36px !important; }
   .i-date-block { text-align: left !important; }
-  .hero-strip { flex-direction: column !important; gap: 20px !important; }
-  .strip-item { border-right: none !important; margin-right: 0 !important; padding-right: 0 !important; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .hero-strip { flex-direction: column !important; gap: 16px !important; }
+  .strip-item { border-right: none !important; margin-right: 0 !important; padding-right: 0 !important; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
   .strip-item:last-child { border-bottom: none !important; padding-bottom: 0 !important; }
 }
 @media(max-width:640px) {
+  section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+  .hero-h1 {
+    font-size: clamp(34px, 10vw, 64px) !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-sub {
+    font-size: 15px !important;
+    margin-bottom: 24px !important;
+  }
+  .hero-eyebrow {
+    margin-bottom: 16px !important;
+  }
   .nav-links { display: none !important; }
   .skill-grid { grid-template-columns: 1fr !important; }
   .f-row { grid-template-columns: 1fr !important; }
   .edu-card-inner { grid-template-columns: 1fr !important; }
+  
+  /* Layout tightening */
+  .intern-card-inner { padding: 22px !important; }
+  .sec-h { margin-bottom: 32px !important; }
+  nav { padding-top: 10px !important; padding-bottom: 10px !important; }
 }
 </style>
 </head>
